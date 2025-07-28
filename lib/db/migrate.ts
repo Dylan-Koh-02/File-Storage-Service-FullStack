@@ -15,7 +15,7 @@ async function runMigration() {
     const db = drizzle(sql);
 
     await migrate(db,{migrationsFolder:"./drizzle"})
-    console.log("All migrations are successlly done!");
+    console.log("All migrations are successfully done!");
     
 
   } catch (error) {

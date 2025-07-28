@@ -13,12 +13,12 @@ export const files = pgTable("files", {
 
   // Basic file info
   name: text("name").notNull(),
-  path: text("path").notNull(), // folder1/folder11/document111 
+  path: text("path").notNull(), // folder1/folder11/document111
   size: integer("size").notNull(),
   type: text("type").notNull(), // "folder"
 
   // Storage info
-  fileurl: text("fileurl").notNull(),
+  fileUrl: text("fileurl").notNull(),
   thumbnailUrl: text("thumbnail_url"),
 
   // Ownership
@@ -35,10 +35,10 @@ export const files = pgTable("files", {
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
 
-/** 
-*parent: Each file/folder can have one parent folder
-*children: Each folder can have many files/folders
-*/
+/**
+ *parent: Each file/folder can have one parent folder
+ *children: Each folder can have many files/folders
+ */
 export const filesRelations = relations(files, ({ one, many }) => ({
   parent: one(files, {
     fields: [files.parentId],
@@ -53,4 +53,4 @@ export const filesRelations = relations(files, ({ one, many }) => ({
  * Generate File type
  */
 export const File = typeof files.$inferSelect;
-export const NewFile=typeof files.$inferInsert
+export const NewFile = typeof files.$inferInsert;

@@ -1,7 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-
+import {
+  Mail,
+  Lock,
+  AlertCircle,
+  CheckCircle,
+  Eye,
+  EyeOff,
+} from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -13,14 +20,6 @@ import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 import { Card, CardBody, CardHeader, CardFooter } from "@heroui/card";
 import { Divider } from "@heroui/divider";
-import {
-  Mail,
-  Lock,
-  AlertCircle,
-  CheckCircle,
-  Eye,
-  EyeOff,
-} from "lucide-react";
 import { signUpSchema } from "@/schemas/signUpSchema";
 
 export default function SignUpForm() {
@@ -30,11 +29,11 @@ export default function SignUpForm() {
   const [authError, setAuthError] = useState<string | null>(null);
   const [verifying, setVerifying] = useState(false);
   const [verificationCode, setVerificationCode] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [verificationError, setVerificationError] = useState<string | null>(
     null
   );
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const {
     register,
